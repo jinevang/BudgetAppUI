@@ -1,10 +1,16 @@
-import { Box, Typography } from "@mui/material"
+import { Box, Grid2, Typography } from "@mui/material"
 
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { useSelector } from "react-redux";
 import { useAppSelector } from '../lib/store';
 
 import moment from 'moment';
+
+// TODO: needs , wants, savings, income
+
+// TODO: most spent on location, most spent on category
+
+// TODO: most common category, most common location
 
 const MainContentView = () => {
   
@@ -24,7 +30,8 @@ const MainContentView = () => {
 				const dateValue = params;
 				return dateValue
 				? new Date(dateValue).toLocaleDateString("en-US", { year: 'numeric', month: '2-digit', day: '2-digit' })
-				: null;			},
+				: null;
+			},
 		},
 		{
 			field: 'name', headerName: 'Transaction Name', width: 150, editable: true
@@ -93,8 +100,24 @@ const MainContentView = () => {
 		width: '70%',
 		padding: '1ch'
 	}}>
+		<Grid2 container spacing={1}>
+			<Grid2>
+				<Box sx={{border: '1px solid gray', borderRadius: '4px', p: '1ch'}}>
+					Total Spendings
+					$4
+				</Box>
+			</Grid2>
+			<Grid2>
+				<Box sx={{border: '1px solid gray', borderRadius: '4px', p: '1ch'}}>
+					Total Income
+					$5
+				</Box>
+			</Grid2>
+		</Grid2>
 	<Typography fontSize={20}>Transactions for {currentMonth != null && moment().month(currentMonth ?? '').format('MMMM')} {currentYear || ''}</Typography>
-	<DataGrid columns={columns} rows={rows} />
+	<DataGrid columns={columns} rows={rows} sx={{
+	width: '100%',
+	maxWidth: '100%'}}/>
 
 	</Box>
 }

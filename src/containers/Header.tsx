@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material"
+import { Box, Input, Typography } from "@mui/material"
 import { FaGear } from "react-icons/fa6";
 
 const Header = () => {
@@ -15,8 +15,11 @@ const Header = () => {
 		marginBottom: '2ch',
 		
 	}}>
-		<Typography fontFamily='inherit' fontSize={35} fontWeight={600}>Budgeting App</Typography>
-		<FaGear/>
+		<Typography fontFamily='inherit' fontSize={35} fontWeight={600} width={'30ch'}>Budgeting App</Typography>
+
+
+		<Input placeholder="Enter transaction here..." fullWidth/>
+		<FaGear size={24} />
 	</Box>
 }
 
