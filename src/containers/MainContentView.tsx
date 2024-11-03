@@ -16,20 +16,17 @@ const MainContentView = () => {
   
 	const { currentYear, currentMonth } = useAppSelector((state) => state.app);
 
-	const month = moment().month();
-	const year = moment().year();
-
 	const columns: GridColDef<(typeof rows)[number]>[] = [
 		{
 			field: 'date',
 			headerName: 'Date',
-			type: 'string',
 			sortable: true,
 			width: 160,
+			editable: true,
 			valueGetter: (params: any) => {
 				const dateValue = params;
 				return dateValue
-				? new Date(dateValue).toLocaleDateString("en-US", { year: 'numeric', month: '2-digit', day: '2-digit' })
+				? moment().format(dateValue)
 				: null;
 			},
 		},
@@ -78,7 +75,7 @@ const MainContentView = () => {
 		{
 			field: 'notes',
 			headerName: 'Notes',
-			width: 110,
+			width: 200,
 			editable: true,
 		},
 	];
@@ -98,8 +95,10 @@ const MainContentView = () => {
 	return <Box
 	sx={{
 		width: '70%',
-		padding: '1ch'
+		padding: '1ch',
+		maxWidth: '70%',
 	}}>
+	<Typography fontSize={20}>Transactions for {currentMonth != null && moment().month(currentMonth ?? '').format('MMMM')} {currentYear || ''}</Typography>
 		<Grid2 container spacing={1}>
 			<Grid2>
 				<Box sx={{border: '1px solid gray', borderRadius: '4px', p: '1ch'}}>
@@ -114,10 +113,8 @@ const MainContentView = () => {
 				</Box>
 			</Grid2>
 		</Grid2>
-	<Typography fontSize={20}>Transactions for {currentMonth != null && moment().month(currentMonth ?? '').format('MMMM')} {currentYear || ''}</Typography>
 	<DataGrid columns={columns} rows={rows} sx={{
-	width: '100%',
-	maxWidth: '100%'}}/>
+	}}/>
 
 	</Box>
 }

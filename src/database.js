@@ -21,6 +21,14 @@ export async function getYearData(year) {
   return db.get('years', year);
 }
 
+export async function getMonthData(month, year) {
+  const db = await initDB();
+
+  const yearData = db.get('years', year);
+
+  return yearData.get('months', month);
+}
+
 export async function getAllYears() {
   const db = await initDB();
   const tx = db.transaction('years', 'readonly');
