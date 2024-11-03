@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material"
-import SettingsIcon from '@mui/icons-material/Settings';
+import { FaGear } from "react-icons/fa6";
 
 const Header = () => {
 	return <Box sx={{
@@ -9,10 +9,14 @@ const Header = () => {
 		justifyContent: 'space-between',
 		alignItems: 'center',
 		width: '100%',
-		border: '1px solid red'
+		boxSizing: 'border-box',
+		padding: '2ch',
+		marginTop: '2ch',
+		marginBottom: '2ch',
+		
 	}}>
-		<Typography fontSize={35} fontWeight={600}>Budgeting App</Typography>
-		<SettingsIcon/>
+		<Typography fontFamily='inherit' fontSize={35} fontWeight={600}>Budgeting App</Typography>
+		<FaGear/>
 	</Box>
 }
 

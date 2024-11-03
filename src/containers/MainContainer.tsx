@@ -3,15 +3,19 @@ import SidebarView from "./SidebarView";
 import MainContentView from "./MainContentView";
 import Header from "./Header";
 
-const MainPage = () => {
+const MainContainer = () => {
 	return <Box sx={{
-		width: '100vw'
+		width: '100vw',
+		overflowX: 'hidden'  // Add this to prevent horizontal scrolling
+
 	}}>
 		<Header/>
 		<Box sx={{
 			display: 'flex',
 			height: '95vh',
-			width: '100%',
+			width: '100vw',
+			overflowX: 'hidden'  // Add this here as well
+
 		}}>
 			<SidebarView/>
 			<MainContentView/>
@@ -19,4 +23,4 @@ const MainPage = () => {
 	</Box>
 }
 
-export default MainPage;
+export default MainContainer;

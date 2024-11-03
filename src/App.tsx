@@ -1,10 +1,9 @@
 import './App.css'
-import MainPage from './containers/MainPage'
+import MainContainer from './containers/MainContainer'
 
 function App() {
-
   return (
-    <MainPage/>
+    <MainContainer/>
   )
 }
 
